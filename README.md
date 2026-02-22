@@ -330,7 +330,7 @@ Two tables:
 
 **Redistribution Recommendations** - The 11 AI-generated transfer orders. Each row shows which medicine to move, from which district, to which district, how many units, the urgency level (High/Medium/Low), and the reason the AI flagged this transfer.
 
----
+
 
 #### Tab 4 - Inventory
 
@@ -342,7 +342,6 @@ The full inventory snapshot table - all 600 records. Columns:
 - Days of stock left (colour-coded: red under 14 days, yellow under 30, green above 30)
 - Stock status pill (Available / Low / Out)
 
----
 
 #### Tab 5 - Batches
 
@@ -354,7 +353,6 @@ All batches flagged as **High expiry risk**. For each record:
 
 This tab is intended to prompt administrators to redistribute or use expiring stock before it is wasted.
 
----
 
 #### Tab 6 - Disease Trends
 
@@ -364,7 +362,6 @@ Two tables:
 
 **Patient Symptom Reports** - Latest weekly counts of fever, headache, chills, and vomiting by district. The total column is colour-coded to highlight districts with elevated symptom burden.
 
----
 
 #### Tab 7 - Facilities
 
@@ -373,7 +370,6 @@ A card grid of all 60 registered health facilities in Botswana, showing:
 - Village, district, and facility type
 - Online status indicator
 
----
 
 ## 10. Admin Login Credentials
 
@@ -387,7 +383,7 @@ Three accounts are pre-configured in the application:
 
 > ⚠️ These are development credentials. Before deploying to a production environment, replace the `ADMIN_USERS` dictionary in `app.py` with a proper hashed password authentication system and a database backend.
 
----
+
 
 ## 11. Language Support
 
@@ -406,7 +402,7 @@ Sentinel BW supports two languages across both the patient portal and the admin 
 - Translations are embedded directly in the HTML using `data-en` and `data-tn` attributes. A small JavaScript function `setLang(lang)` iterates over all elements carrying these attributes and swaps their inner content.
 - The autocomplete suggestion dropdown also respects the current language, showing Setswana stock status labels when TN is active.
 
----
+
 
 ## 12. How the AI Engine Works
 
@@ -433,7 +429,7 @@ For each district-disease combination, the app selects only the **most recent we
 
 The `redistribution_recommendations.csv` contains AI-generated orders. Each row identifies a source district with surplus stock and a target district with a deficit, along with the recommended transfer quantity and urgency.
 
----
+
 
 ## 13. Template Auto-Write System
 
@@ -448,7 +444,7 @@ Every time the application starts, the templates are decoded and written to the 
 
 This design was chosen because the development environment (PyCharm on Windows) created empty placeholder files that caused `TemplateNotFound` errors. Embedding templates eliminates this class of error entirely.
 
----
+
 
 ## 14. Data Privacy & Design Decisions
 
@@ -467,7 +463,7 @@ Medicine availability is public health information. Requiring patients to create
 
 All inventory data reflects a snapshot from **2026-02-21**. In a production system, this would be replaced by a live database connection updated by facility staff or automated reporting systems.
 
----
+
 
 ## 15. Known Limitations & Future Work
 
@@ -483,7 +479,7 @@ All inventory data reflects a snapshot from **2026-02-21**. In a production syst
 | No audit log | Track which admin acknowledged which alert and when |
 | Single-file template system | Move to a proper Jinja2 template hierarchy with base templates and blocks |
 
----
+
 
 ## Built With
 
@@ -495,7 +491,7 @@ All inventory data reflects a snapshot from **2026-02-21**. In a production syst
 
 No JavaScript frameworks, no npm, no build step. The entire frontend runs on plain HTML, CSS, and vanilla JS.
 
----
+
 
 ## Quick Start Summary
 
