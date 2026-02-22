@@ -31,8 +31,8 @@ MedStock was built to solve a real public health problem in Botswana: patients t
 
 MedStock provides two distinct interfaces running from a single Flask application:
 
-- **The Patient Portal** — a public-facing search tool (no login required) where any person can look up which clinics and hospitals near them currently stock a specific medicine, filterable by district.
-- **The Admin Dashboard** — a secure, login-protected command centre for health officials to monitor inventory, act on AI-generated alerts, track expiry dates, manage redistribution, and analyse disease trends — all from one tabbed interface.
+- **The Patient Portal** - a public-facing search tool (no login required) where any person can look up which clinics and hospitals near them currently stock a specific medicine, filterable by district.
+- **The Admin Dashboard** - a secure, login-protected command centre for health officials to monitor inventory, act on AI-generated alerts, track expiry dates, manage redistribution, and analyse disease trends — all from one tabbed interface.
 
 The system is built on **9 real synthetic CSV datasets** representing 60 facilities, 10 medicines, and 9 districts across Botswana.
 
