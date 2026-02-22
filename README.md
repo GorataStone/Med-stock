@@ -397,7 +397,7 @@ Three accounts are pre-configured in the application:
 
 ## 11. Language Support
 
-Sentinel BW supports two languages across both the patient portal and the admin dashboard:
+MedStock supports two languages across both the patient portal and the admin dashboard:
 
 | Code | Language | Coverage |
 |---|---|---|
@@ -523,4 +523,4 @@ python app.py
 
 ---
 
-*Sentinel BW — Protecting Botswana's medicine supply chain, one facility at a time.*
+*MedStock — Protecting Botswana's medicine supply chain, one facility at a time.*
