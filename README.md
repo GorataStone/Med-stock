@@ -62,12 +62,11 @@ The system is built on **9 real synthetic CSV datasets** representing 60 facilit
 | Live clock | Real-time clock in the page header |
 | Bilingual UI | EN / TN language toggle matching the patient portal |
 
----
 
 ## 3. Project Structure
 
 ```
-SentinelBW/
+SentinelBW\/
 │
 ├── app.py                          # Main Flask application (all logic + embedded templates)
 │
@@ -96,7 +95,6 @@ SentinelBW/
 
 > **Note:** The `templates/` folder and all HTML files inside it are automatically created every time `app.py` starts. They are embedded as base64 strings inside `app.py` and written to disk on startup. You never need to copy or manage template files manually.
 
----
 
 ## 4. Data Sources (CSV Datasets)
 
@@ -122,7 +120,6 @@ Central · Chobe · Ghanzi · Kgalagadi · Kgatleng · Kweneng · North-East · 
 ### Medicines tracked
 Malaria Rapid Diagnostic Test (RDT) · ACT Adult Dose · ACT Pediatric Dose · ARV Regimen TLD · Cotrimoxazole Prophylaxis · COVID Antigen Test · Paracetamol · Oral Rehydration Salts (ORS) · PPE Kit · Oxygen Cylinder Refill Units
 
----
 
 ## 5. Installation & Setup
 
@@ -210,7 +207,7 @@ The root URL automatically redirects to the admin login page. To go directly to 
 http://127.0.0.1:5000/patient
 ```
 
----
+
 
 ## 7. URL Routes Reference
 
@@ -234,7 +231,6 @@ http://127.0.0.1:5000/patient
 
 These parameters can be combined, e.g., `/patient/search?q=ACT&district=Chobe.`
 
----
 
 ## 8. Patient Portal — Full Guide
 
@@ -298,7 +294,6 @@ If there are any unacknowledged alerts, a red banner appears below the stat card
 
 The dashboard is organised into **7 tabs**. Click any tab to switch content, no page reload required.
 
----
 
 #### Tab 1 Overview
 
@@ -306,7 +301,6 @@ A summary view of the system state. Contains:
 - Three metric cards: total stock, redistribution orders pending, and high-risk districts
 - **Medicine Overview table** one row per medicine showing how many facilities are Out, Low, or Available for that medicine across the country
 
----
 
 #### Tab 2 — Alerts
 
@@ -320,7 +314,6 @@ The AI-generated alert feed. Three types of alerts are shown:
 
 Each alert shows the medicine name, the facility and district affected, and a specific action message.
 
----
 
 #### Tab 3 - Predictions
 
@@ -329,7 +322,6 @@ Two tables:
 **7-Day Stockout Risk** - All facility-medicine pairs flagged as High risk of running out within 7 days. Shows expected demand and exact stockout probability percentage.
 
 **Redistribution Recommendations** - The 11 AI-generated transfer orders. Each row shows which medicine to move, from which district, to which district, how many units, the urgency level (High/Medium/Low), and the reason the AI flagged this transfer.
-
 
 
 #### Tab 4 - Inventory
@@ -383,11 +375,9 @@ Three accounts are pre-configured in the application:
 
 > ⚠️ These are development credentials. Before deploying to a production environment, replace the `ADMIN_USERS` dictionary in `app.py` with a proper hashed password authentication system and a database backend.
 
-
-
 ## 11. Language Support
 
-Sentinel BW supports two languages across both the patient portal and the admin dashboard:
+MedStock supports two languages across both the patient portal and the admin dashboard:
 
 | Code | Language | Coverage |
 |---|---|---|
