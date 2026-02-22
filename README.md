@@ -15,7 +15,7 @@
 6. [Running the Application](#6-running-the-application)
 7. [URL Routes Reference](#7-url-routes-reference)
 8. [Patient Portal - Full Guide](#8-patient-portal--full-guide)
-9. [Admin Dashboard — Full Guide](#9-admin-dashboard--full-guide)
+9. [Admin Dashboard - Full Guide](#9-admin-dashboard--full-guide)
 10. [Admin Login Credentials](#10-admin-login-credentials)
 11. [Language Support](#11-language-support)
 12. [How the AI Engine Works](#12-how-the-ai-engine-works)
@@ -77,7 +77,7 @@ SentinelBW/
 │
 ├── app.py                          # Main Flask application (all logic + embedded templates)
 │
-├── templates/                      # Auto-generated on startup — do not edit manually
+├── templates/                      # Auto-generated on startup - do not edit manually
 │   ├── admin_dashboard.html        # Admin dashboard (7 tabs)
 │   ├── admin_login.html            # Login page
 │   └── patients.html               # Public patient portal
@@ -117,10 +117,10 @@ All datasets are synthetic but modelled on real Botswana geography and public he
 | `expiry_summary.csv` | 594 | Aggregated expiry risk per facility-medicine with quantities expiring within 30 and 60 days |
 | `stockout_risk.csv` | 1,201 | AI-predicted stockout probabilities at 7-day and 30-day horizons per facility-medicine |
 | `redistribution_recommendations.csv` | 11 | AI-generated transfer recommendations between districts with urgency level and reason |
-| `district_risk.csv` | 391 | Weekly disease risk scores (0–100) per district for Malaria, HIV, and COVID |
+| `district_risk.csv` | 391 | Weekly disease risk scores (0-100) per district for Malaria, HIV, and COVID |
 | `disease_cases.csv` | 391 | Weekly suspected and confirmed disease case counts per district |
 | `symptom_reports.csv` | 131 | Weekly patient symptom reports per district (fever, headache, chills, vomiting counts) |
-| `weather_data.csv` | 131 | Weekly weather data per district (rainfall, temperature, humidity) — loaded by app for future use |
+| `weather_data.csv` | 131 | Weekly weather data per district (rainfall, temperature, humidity) - loaded by app for future use |
 
 ### Districts covered
 Central · Chobe · Ghanzi · Kgalagadi · Kgatleng · Kweneng · North-East · South-East · Southern
@@ -137,19 +137,19 @@ Malaria Rapid Diagnostic Test (RDT) · ACT Adult Dose · ACT Pediatric Dose · A
 - Python 3.8 or higher
 - pip
 
-### Step 1 — Clone or download the project
+### Step 1 - Clone or download the project
 
-Place all project files in a single folder, e.g. `C:\Users\yourname\PycharmProjects\SentinelBW\`
+Place all project files in a single folder, e.g. `C:\Users\yourname\PycharmProjects\SentinelBW\.`
 
-### Step 2 — Install dependencies
+### Step 2 - Install dependencies
 
 ```bash
 pip install flask
 ```
 
-Flask is the only dependency. No other packages are required — the app uses Python's built-in `csv`, `os`, and `base64` modules for everything else.
+Flask is the only dependency. No other packages are required; the app uses Python's built-in `csv`, `os`, and `base64` modules for everything else.
 
-### Step 3 — Place your CSV files
+### Step 3: Place your CSV files
 
 Copy all 11 CSV files into the **same folder as `app.py`**. The app will search both the root folder and a `data/` subfolder automatically:
 
@@ -171,7 +171,7 @@ SentinelBW/
 
 If a CSV file is missing, the app will display a clear error message showing the exact path it was looking for.
 
-### Step 4 — Ensure the static folder exists
+### Step 4: Ensure the static folder exists
 
 ```
 SentinelBW/
@@ -185,7 +185,7 @@ The `templates/` folder is created automatically — you do not need to create i
 
 ## 6. Running the Application
 
-### From the terminal / command prompt
+### From the terminal/command prompt
 
 ```bash
 cd path/to/SentinelBW
@@ -230,7 +230,7 @@ http://127.0.0.1:5000/patient
 | `/admin` | GET | Admin only | Full admin dashboard |
 | `/admin/logout` | GET | Admin only | Clears session and redirects to login |
 
-### Query parameters for `/patient/search`
+### Query parameters for `/patient/search.`
 
 | Parameter | Example | Description |
 |---|---|---|
@@ -238,18 +238,18 @@ http://127.0.0.1:5000/patient
 | `category` | `?category=Malaria` | Filter by disease category |
 | `district` | `?district=Chobe` | Filter results to one district only |
 
-These parameters can be combined, e.g. `/patient/search?q=ACT&district=Chobe`
+These parameters can be combined, e.g., `/patient/search?q=ACT&district=Chobe.`
 
 ---
 
 ## 8. Patient Portal — Full Guide
 
 **URL:** `http://127.0.0.1:5000/patient`  
-**Access:** No login required — fully public
+**Access:** No login required, fully public
 
 ### How to find a medicine
 
-1. **Type in the search box** — start typing a medicine name. A dropdown of suggestions appears automatically after the first character. Click any suggestion to search immediately.
+1. **Type in the search box** start typing a medicine name. A dropdown of suggestions appears automatically after the first character. Click any suggestion to search immediately.
 2. **Use the Category dropdown** to narrow down by disease area (Malaria, HIV, General, etc.)
 3. **Use the District dropdown** to filter to your local area.
 4. Click **Search**.
@@ -258,25 +258,25 @@ These parameters can be combined, e.g. `/patient/search?q=ACT&district=Chobe`
 
 Each result card shows:
 - **Medicine name** and dosage form
-- **Availability status** — one of three clearly colour-coded banners:
-  - 🟢 **Available at multiple facilities** — well stocked, go to any listed facility
-  - 🟡 **Limited availability — act soon** — stock is low, visit soon
-  - 🔴 **Currently out of stock** — not available at this time
-- **Facility list** — every clinic or hospital that carries this medicine, showing the facility name, village, district, facility type, and whether stock is In Stock, Low Stock, or Out
+- **Availability status** one of three clearly colour-coded banners:
+  - 🟢 **Available at multiple facilities** well stocked, go to any listed facility
+  - 🟡 **Limited availability act soon** stock is low, visit soon
+  - 🔴 **Currently out of stock** not available at this time
+- **Facility list** every clinic or hospital that carries this medicine, showing the facility name, village, district, facility type, and whether stock is In Stock, Low Stock, or Out
 
 > Stock unit numbers are intentionally hidden from patients to avoid confusion and prevent unnecessary crowding at specific facilities.
 
 ### District filter chips
 
-Below the search bar there is a row of district chips. Clicking any district immediately filters the view to only show facilities in that district. The **All** chip clears the filter.
+Below the search bar, there is a row of district chips. Clicking any district immediately filters the view to only show facilities in that district. The **All** chip clears the filter.
 
 ### Browse by District grid
 
-At the bottom of the page, a grid of all 9 district cards lets you jump straight to district-filtered results without typing a medicine name — useful if you just want to see what is available near you.
+At the bottom of the page, a grid of all 9 district cards lets you jump straight to district-filtered results without typing a medicine name useful if you just want to see what is available near you.
 
 ### Language toggle
 
-Top-right of the navigation bar has an **EN / TN** toggle. Switching to **TN** translates all interface text to Setswana. This setting is saved in your browser and remembered on your next visit.
+The top-right of the navigation bar has an **EN / TN** toggle. Switching to **TN** translates all interface text to Setswana. This setting is saved in your browser and remembered on your next visit.
 
 ---
 
@@ -302,15 +302,15 @@ If there are any unacknowledged alerts, a red banner appears below the stat card
 
 ### Tab Navigation
 
-The dashboard is organised into **7 tabs**. Click any tab to switch content — no page reload required.
+The dashboard is organised into **7 tabs**. Click any tab to switch content, no page reload required.
 
 ---
 
-#### Tab 1 — Overview
+#### Tab 1 Overview
 
 A summary view of the system state. Contains:
 - Three metric cards: total stock, redistribution orders pending, and high-risk districts
-- **Medicine Overview table** — one row per medicine showing how many facilities are Out, Low, or Available for that medicine across the country
+- **Medicine Overview table** one row per medicine showing how many facilities are Out, Low, or Available for that medicine across the country
 
 ---
 
@@ -320,27 +320,27 @@ The AI-generated alert feed. Three types of alerts are shown:
 
 | Alert Type | Trigger | Colour |
 |---|---|---|
-| 🔴 CRITICAL | `stock_status = 'Out'` in inventory snapshot | Red left border |
-| ⏳ EXPIRY | `expiry_risk_level = 'High'` in expiry summary | Amber left border |
-| 📉 SHORTAGE | `stockout_risk_level = 'High'` at 7-day horizon | Purple left border |
+| 🔴 CRITICAL | `stock_status - 'Out'` in inventory snapshot | Red left border |
+| ⏳ EXPIRY | `expiry_risk_level - 'High'` in expiry summary | Amber left border |
+| 📉 SHORTAGE | `stockout_risk_level - 'High'` at 7-day horizon | Purple left border |
 
 Each alert shows the medicine name, the facility and district affected, and a specific action message.
 
 ---
 
-#### Tab 3 — Predictions
+#### Tab 3 - Predictions
 
 Two tables:
 
-**7-Day Stockout Risk** — All facility-medicine pairs flagged as High risk of running out within 7 days. Shows expected demand and exact stockout probability percentage.
+**7-Day Stockout Risk** - All facility-medicine pairs flagged as High risk of running out within 7 days. Shows expected demand and exact stockout probability percentage.
 
-**Redistribution Recommendations** — The 11 AI-generated transfer orders. Each row shows which medicine to move, from which district, to which district, how many units, the urgency level (High/Medium/Low), and the reason the AI flagged this transfer.
+**Redistribution Recommendations** - The 11 AI-generated transfer orders. Each row shows which medicine to move, from which district, to which district, how many units, the urgency level (High/Medium/Low), and the reason the AI flagged this transfer.
 
 ---
 
-#### Tab 4 — Inventory
+#### Tab 4 - Inventory
 
-The full inventory snapshot table — all 600 records. Columns:
+The full inventory snapshot table - all 600 records. Columns:
 - Facility name and district
 - Medicine name
 - Quantity on hand
@@ -350,7 +350,7 @@ The full inventory snapshot table — all 600 records. Columns:
 
 ---
 
-#### Tab 5 — Batches
+#### Tab 5 - Batches
 
 All batches flagged as **High expiry risk**. For each record:
 - Facility and medicine
@@ -362,17 +362,17 @@ This tab is intended to prompt administrators to redistribute or use expiring st
 
 ---
 
-#### Tab 6 — Disease Trends
+#### Tab 6 - Disease Trends
 
 Two tables:
 
-**District Risk Scores** — Latest AI-computed risk scores (0–100) per district for Malaria, HIV, and COVID. Includes an inline visual progress bar and colour-coded risk level (High/Medium/Low) plus projected cases for next week.
+**District Risk Scores** - Latest AI-computed risk scores (0–100) per district for Malaria, HIV, and COVID. Includes an inline visual progress bar and colour-coded risk level (High/Medium/Low) plus projected cases for next week.
 
-**Patient Symptom Reports** — Latest weekly counts of fever, headache, chills, and vomiting by district. The total column is colour-coded to highlight districts with elevated symptom burden.
+**Patient Symptom Reports** - Latest weekly counts of fever, headache, chills, and vomiting by district. The total column is colour-coded to highlight districts with elevated symptom burden.
 
 ---
 
-#### Tab 7 — Facilities
+#### Tab 7 - Facilities
 
 A card grid of all 60 registered health facilities in Botswana, showing:
 - Facility name
@@ -391,7 +391,7 @@ Three accounts are pre-configured in the application:
 | `doctor` | `doctor456` | Dr. Kefilwe Moyo | Medical Officer |
 | `pharmacist` | `pharma789` | Thabo Sithole | Pharmacist |
 
-> ⚠️ These are development credentials. Before deploying to a production environment, replace the `ADMIN_USERS` dictionary in `app.py` with a proper hashed-password authentication system and a database backend.
+> ⚠️ These are development credentials. Before deploying to a production environment, replace the `ADMIN_USERS` dictionary in `app.py` with a proper hashed password authentication system and a database backend.
 
 ---
 
