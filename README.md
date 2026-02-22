@@ -388,10 +388,10 @@ Three accounts are pre-configured in the application:
 | Username | Password | Name | Role |
 |---|---|---|---|
 | `admin` | `admin123` | System Admin | Super Admin |
-| `doctor` | `doctor456` | Dr. Kefilwe Moyo | Medical Officer |
+| `doctor` | `doctor456` | Dr. Katlo Sefawe | Medical Officer |
 | `pharmacist` | `pharma789` | Thabo Sithole | Pharmacist |
 
-> ⚠️ These are development credentials. Before deploying to a production environment, replace the `ADMIN_USERS` dictionary in `app.py` with a proper hashed-password authentication system and a database backend.
+>  These are development credentials. Before deploying to a production environment, replace the `ADMIN_USERS` dictionary in `app.py` with a proper hashed-password authentication system and a database backend.
 
 ---
 
