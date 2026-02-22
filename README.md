@@ -3,8 +3,6 @@
 
 > A full-stack AI-powered web application that gives patients real-time visibility into medicine availability across all public health facilities in Botswana, and gives health administrators a live command centre to monitor stock, predict shortages, and coordinate redistribution.
 
----
-
 ## Table of Contents
 
 1. [Project Overview](#1-project-overview)
@@ -23,7 +21,6 @@
 14. [Data Privacy & Design Decisions](#14-data-privacy--design-decisions)
 15. [Known Limitations & Future Work](#15-known-limitations--future-work)
 
----
 
 ## 1. Project Overview
 
@@ -32,21 +29,18 @@ MedStock was built to solve a real public health problem in Botswana: patients t
 MedStock provides two distinct interfaces running from a single Flask application:
 
 - **The Patient Portal** - a public-facing search tool (no login required) where any person can look up which clinics and hospitals near them currently stock a specific medicine, filterable by district.
-- **The Admin Dashboard** - a secure, login-protected command centre for health officials to monitor inventory, act on AI-generated alerts, track expiry dates, manage redistribution, and analyse disease trends — all from one tabbed interface.
+- **The Admin Dashboard** - a secure, login-protected command centre for health officials to monitor inventory, act on AI-generated alerts, track expiry dates, manage redistribution, and analyse disease trends all from one tabbed interface.
 
 The system is built on **9 real synthetic CSV datasets** representing 60 facilities, 10 medicines, and 9 districts across Botswana.
-
----
 
 ## 2. Features at a Glance
 
 ### Patient Portal
 | Feature | Description |
-|---|---|
 | Medicine search | Type-ahead autocomplete search across all 10 medicines |
 | Category filter | Filter results by disease category (Malaria, HIV, etc.) |
 | District filter | Filter by any of 9 Botswana districts via dropdown or chip buttons |
-| Availability status | Clear In Stock / Low Stock / Out indicators — no confusing unit counts shown to patients |
+| Availability status | Clear In Stock / Low Stock / Out indicators - no confusing unit counts shown to patients |
 | Facility listing | Shows facility name, village, district, and facility type for each location carrying the medicine |
 | District browse grid | One-click district cards at the bottom of the page to jump straight to district results |
 | Bilingual UI | Full English and Setswana language toggle, persisted across sessions via localStorage |
