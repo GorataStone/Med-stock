@@ -1,0 +1,12 @@
+date_generated,disease,medicine_id,source_district,target_district,source_facility_id,target_facility_id,recommended_quantity,urgency_level,reason
+2026-02-21,Malaria,MAL_ACT_AD,Chobe,North-East,F031,F039,58,High,Malaria district risk High; stockout prob 1.0; 1 days cover
+2026-02-21,Malaria,MAL_ACT_AD,North-East,Chobe,F015,F001,150,High,Malaria district risk High; stockout now; stockout prob 1.0; 0 days cover
+2026-02-21,Malaria,MAL_RDT,Chobe,Ghanzi,F055,F057,39,Low,Malaria district risk Low; stockout now; stockout prob 0.81; 0 days cover
+2026-02-21,Malaria,MAL_ACT_PD,North-East,North-East,F015,F059,113,High,Malaria district risk High; stockout prob 0.91; 6 days cover
+2026-02-21,Malaria,MAL_RDT,North-East,Kgatleng,F006,F002,83,Low,Malaria district risk Low; stockout now; stockout prob 0.81; 0 days cover
+2026-02-21,Malaria,MAL_RDT,North-East,Chobe,F019,F001,175,High,Malaria district risk High; stockout prob 1.0; 0 days cover
+2026-02-21,Malaria,MAL_ACT_AD,Chobe,Chobe,F028,F056,162,High,Malaria district risk High; stockout now; stockout prob 1.0; 0 days cover
+2026-02-21,Malaria,MAL_ACT_AD,North-East,Chobe,F024,F030,122,High,Malaria district risk High; stockout prob 0.91; 4 days cover
+2026-02-21,Malaria,MAL_ACT_AD,Chobe,Ghanzi,F055,F054,81,Low,Malaria district risk Low; stockout now; stockout prob 0.81; 0 days cover
+2026-02-21,Malaria,MAL_ACT_AD,North-East,Chobe,F047,F018,179,High,Malaria district risk High; stockout now; stockout prob 1.0; 0 days cover
+2026-02-21,Malaria,MAL_ACT_AD,Chobe,Ghanzi,F031,F048,58,Low,Malaria district risk Low; stockout now; stockout prob 0.81; 0 days cover

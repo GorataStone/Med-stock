@@ -1,0 +1,61 @@
+facility_id,facility_name,facility_type,district,village_town,latitude,longitude,storage_capacity_units,cold_storage_available
+F001,Kasane Clinic 01,Clinic,Chobe,Kasane,-18.231949810221067,26.85610317419098,3314,Yes
+F002,Oodi Clinic 02,Clinic,Kgatleng,Oodi,-26.41737327641761,28.11473224736889,3324,No
+F003,Hukuntsi Clinic 03,Clinic,Kgalagadi,Hukuntsi,-18.05592665567451,27.798311970707957,1691,Yes
+F004,Parakarungu Clinic 04,Clinic,Chobe,Parakarungu,-24.16009863206104,24.912215328710392,2614,Yes
+F005,Parakarungu Clinic 05,Clinic,Chobe,Parakarungu,-25.670841297820775,22.730316803260344,2338,Yes
+F006,Francistown Hospital 06,Hospital,North-East,Francistown,-25.11899141760784,24.813519032319675,3288,Yes
+F007,Palapye Clinic 07,Clinic,Central,Palapye,-25.386293785787537,20.60018394220192,4785,No
+F008,Hukuntsi Hospital 08,Hospital,Kgalagadi,Hukuntsi,-24.15669173668019,20.906164429379878,3673,Yes
+F009,Jwaneng Clinic 09,Clinic,Southern,Jwaneng,-22.409227734279654,20.31256432806075,4619,Yes
+F010,Rakops Clinic 10,Clinic,Central,Rakops,-24.0916094322601,24.868238038647867,3096,Yes
+F011,Tshabong Outpost Health Post 11,Health Post,Kgalagadi,Tshabong Outpost,-19.84203200977858,28.802500071872096,4558,No
+F012,Tshabong Outpost Health Post 12,Health Post,Kgalagadi,Tshabong Outpost,-26.138523756183897,21.82831924949158,989,Yes
+F013,Otse Clinic 13,Clinic,South-East,Otse,-24.461729378633375,27.7635578358451,2298,Yes
+F014,Mahalapye Clinic 14,Clinic,Central,Mahalapye,-25.657724856981424,27.514607679472892,1113,No
+F015,Tati Siding Hospital 15,Hospital,North-East,Tati Siding,-25.12777720033164,20.04179745861939,4224,No
+F016,Oodi Hospital 16,Hospital,Kgatleng,Oodi,-19.877450920889878,20.684538833265766,2305,Yes
+F017,Werda Health Post 17,Health Post,Kgalagadi,Werda,-21.234356176991295,23.093823473117848,1066,Yes
+F018,Kasane Clinic 18,Clinic,Chobe,Kasane,-20.259511344639954,25.970289081311897,4526,Yes
+F019,Francistown Clinic 19,Clinic,North-East,Francistown,-20.40954530116514,27.1261637560265,3157,No
+F020,Letlhakeng Clinic 20,Clinic,Kweneng,Letlhakeng,-22.156539954567116,24.000334752203194,906,Yes
+F021,Otse Clinic 21,Clinic,South-East,Otse,-21.114116528711136,22.938659102495944,2935,No
+F022,Tutume Clinic 22,Clinic,Central,Tutume,-23.186788595763275,27.077069679533796,1760,Yes
+F023,Kanye Clinic 23,Clinic,Southern,Kanye,-25.47160079588078,28.710563978973337,4194,No
+F024,Francistown Health Post 24,Health Post,North-East,Francistown,-19.58032705483512,21.740027152351015,4548,Yes
+F025,Mmathethe Hospital 25,Hospital,Southern,Mmathethe,-18.73284277970157,22.972872595236083,1262,Yes
+F026,Otse Clinic 26,Clinic,South-East,Otse,-19.44880459649074,28.0636528709445,829,Yes
+F027,Tlokweng Clinic 27,Clinic,South-East,Tlokweng,-24.913271377983403,21.114337145589943,2217,No
+F028,Kasane Clinic 28,Clinic,Chobe,Kasane,-22.192689998613332,26.584317834436767,2327,No
+F029,Werda Health Post 29,Health Post,Kgalagadi,Werda,-24.64115634728141,24.654190985270574,2063,Yes
+F030,Kazungula Clinic 30,Clinic,Chobe,Kazungula,-21.360295057404347,24.70512923788672,1016,Yes
+F031,Lesoma Health Post 31,Health Post,Chobe,Lesoma,-24.753217462583862,21.34911390021567,2855,No
+F032,Bokaa (Kgatleng) Clinic 32,Clinic,Kgatleng,Bokaa (Kgatleng),-20.786517030288095,27.133991991783372,1798,No
+F033,Thamaga Clinic 33,Clinic,Kweneng,Thamaga,-21.15175553345688,25.932508686937194,3050,Yes
+F034,Letlhakeng Hospital 34,Hospital,Kweneng,Letlhakeng,-24.008446804209182,21.73954362755063,971,No
+F035,Werda Clinic 35,Clinic,Kgalagadi,Werda,-26.79788960873156,24.793432886847256,1751,No
+F036,Parakarungu Clinic 36,Clinic,Chobe,Parakarungu,-20.614100941600388,23.61757754829904,4734,Yes
+F037,Charles Hill Clinic 37,Clinic,Ghanzi,Charles Hill,-25.9094478102238,28.66362613945292,4484,Yes
+F038,Kang (Ghanzi) Clinic 38,Clinic,Ghanzi,Kang (Ghanzi),-19.45607242415485,25.197783612802958,3024,Yes
+F039,Tati Siding Clinic 39,Clinic,North-East,Tati Siding,-18.722531499567992,28.43592137619204,3459,Yes
+F040,Goodhope Clinic 40,Clinic,Southern,Goodhope,-20.292986424759906,28.404894238355176,4525,No
+F041,Molepolole Clinic 41,Clinic,Kweneng,Molepolole,-26.1784365209954,21.506077338207476,4573,No
+F042,Tsabong Clinic 42,Clinic,Kgalagadi,Tsabong,-26.019505951918486,26.213646594233563,821,Yes
+F043,Mogoditshane Clinic 43,Clinic,Kweneng,Mogoditshane,-20.605321037158003,26.105396614134392,1741,No
+F044,Mochudi Clinic 44,Clinic,Kgatleng,Mochudi,-23.966084767879515,26.992089380007066,3528,No
+F045,Werda Clinic 45,Clinic,Kgalagadi,Werda,-21.738610107413727,20.868669322227507,2344,Yes
+F046,Tshabong Outpost Clinic 46,Clinic,Kgalagadi,Tshabong Outpost,-18.027493212920078,23.677256657374212,4546,No
+F047,Matsiloje Hospital 47,Hospital,North-East,Matsiloje,-22.34081785622539,25.40135843779525,2868,Yes
+F048,D'Kar Hospital 48,Hospital,Ghanzi,D'Kar,-24.37531743641735,20.218083765127034,3510,Yes
+F049,Charles Hill Health Post 49,Health Post,Ghanzi,Charles Hill,-18.202474948886277,28.571427980267806,2354,Yes
+F050,Jwaneng Health Post 50,Health Post,Southern,Jwaneng,-23.023551359930227,29.05722220262962,4847,No
+F051,Bokaa (Kgatleng) Clinic 51,Clinic,Kgatleng,Bokaa (Kgatleng),-23.418653828720345,27.97366197882812,2131,Yes
+F052,Moshupa Clinic 52,Clinic,South-East,Moshupa,-18.36546072094564,26.51875949281125,3194,Yes
+F053,Thamaga Clinic 53,Clinic,Kweneng,Thamaga,-17.87120619454391,21.303988062918595,2976,No
+F054,Kang (Ghanzi) Hospital 54,Hospital,Ghanzi,Kang (Ghanzi),-20.558365655073395,26.579300707799085,2309,Yes
+F055,Kasane Hospital 55,Hospital,Chobe,Kasane,-19.521260170791912,28.123138348281373,4635,Yes
+F056,Kazungula Clinic 56,Clinic,Chobe,Kazungula,-19.629633208874672,26.086661670695438,3748,No
+F057,Kang (Ghanzi) Health Post 57,Health Post,Ghanzi,Kang (Ghanzi),-23.850584411671417,23.512968095762673,1194,No
+F058,Ramotswa Clinic 58,Clinic,South-East,Ramotswa,-22.680466173725343,25.08000667355707,2003,No
+F059,Matsiloje Clinic 59,Clinic,North-East,Matsiloje,-26.607517109169702,27.705993258987597,2312,Yes
+F060,Moshupa Clinic 60,Clinic,South-East,Moshupa,-19.88915911808574,22.01440123792039,3416,Yes

@@ -1,0 +1,11 @@
+medicine_id,medicine_name,disease_category,dosage_form,strength,unit_cost,minimum_buffer_days,shelf_life_days
+MAL_RDT,Malaria Rapid Diagnostic Test (RDT),Malaria,Test Kit,N/A,12.0,14,730
+MAL_ACT_AD,ACT Adult Dose,Malaria,Tablet,20/120mg,5.5,21,730
+MAL_ACT_PD,ACT Pediatric Dose,Malaria,Tablet,20/120mg (peds),4.0,21,730
+HIV_TLD,ARV Regimen TLD,HIV,Tablet,TDF/3TC/DTG,7.0,60,1095
+HIV_CPT,Cotrimoxazole Prophylaxis,HIV,Tablet,960mg,2.0,30,1095
+C19_PPE,PPE Kit,COVID,Kit,N/A,18.0,14,730
+C19_AG,COVID Antigen Test,COVID,Test Kit,N/A,10.0,14,730
+C19_O2,Oxygen Cylinder Refill Units,COVID,Service Unit,N/A,35.0,7,365
+GEN_PARA,Paracetamol,General,Tablet,500mg,0.2,14,1095
+GEN_ORZ,Oral Rehydration Salts (ORS),General,Sachet,N/A,0.5,14,1095

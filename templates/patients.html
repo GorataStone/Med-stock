@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MedStock — Find Your Medicine</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',sans-serif;background:#f5f6fa;color:#1a1d23;min-height:100vh}
+    a{text-decoration:none;color:inherit}
+
+    /* NAV */
+    .nav{background:#1e2d6b;padding:0 32px;height:58px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+    .nav-brand{display:flex;align-items:center;gap:12px}
+    .nav-logo{width:36px;height:36px;background:rgba(255,255,255,0.15);border-radius:10px;display:flex;align-items:center;justify-content:center}
+    .nav-name{color:#fff;font-size:16px;font-weight:700}
+    .nav-sub{color:rgba(255,255,255,0.55);font-size:11px;margin-top:1px}
+    .nav-right{display:flex;align-items:center;gap:12px}
+    .public-pill{background:rgba(34,197,94,0.2);color:#86efac;font-size:12px;font-weight:500;padding:5px 12px;border-radius:20px;border:1px solid rgba(34,197,94,0.3)}
+    .btn-admin{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.85);padding:6px 14px;border-radius:8px;font-size:12px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:background .15s}
+    .btn-admin:hover{background:rgba(255,255,255,0.2)}
+
+    /* LANGUAGE TOGGLE */
+    .lang-toggle{display:flex;align-items:center;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;overflow:hidden}
+    .lang-btn{padding:5px 12px;font-size:12px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.65);transition:all .15s}
+    .lang-btn.active{background:rgba(255,255,255,0.25);color:#fff}
+    .lang-btn:hover:not(.active){background:rgba(255,255,255,0.12);color:#fff}
+
+    /* HERO */
+    .hero{background:linear-gradient(135deg,#1e2d6b 0%,#1e40af 60%,#1d4ed8 100%);padding:56px 32px 52px;text-align:center}
+    .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);font-size:12px;font-weight:500;padding:5px 14px;border-radius:20px;margin-bottom:18px;border:1px solid rgba(255,255,255,0.15)}
+    .hero h1{font-size:36px;font-weight:700;color:#fff;margin-bottom:10px}
+    .hero-sub{font-size:15px;color:rgba(255,255,255,0.72);max-width:520px;margin:0 auto 28px;line-height:1.6}
+
+    /* SEARCH */
+    .search-wrap{max-width:760px;margin:0 auto;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+    .search-field{position:relative;flex:1;min-width:220px}
+    .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:#8a94a6}
+    .search-input{width:100%;height:46px;padding:0 14px 0 42px;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.95);font-size:14px;font-family:'Inter',sans-serif;color:#1a1d23;outline:none}
+    .search-input:focus{border-color:#3b82f6;background:#fff}
+    .search-select{height:46px;padding:0 14px;border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;background:rgba(255,255,255,0.95);font-size:14px;font-family:'Inter',sans-serif;color:#1a1d23;outline:none;cursor:pointer;min-width:150px}
+    .btn-search{height:46px;padding:0 24px;background:#22c55e;border:none;border-radius:10px;color:#fff;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
+    .btn-search:hover{background:#16a34a}
+
+    /* AUTOCOMPLETE */
+    .suggestions-box{position:absolute;top:calc(100% + 6px);left:0;right:0;background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,0.12);z-index:200;display:none;overflow:hidden}
+    .suggestion-item{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;cursor:pointer;border-bottom:1px solid #f1f5f9;gap:12px}
+    .suggestion-item:last-child{border-bottom:none}
+    .suggestion-item:hover{background:#f8faff}
+    .sug-name{font-size:13px;font-weight:600;color:#1a1d23}
+    .sug-cat-tag{font-size:11px;color:#6b7280;background:#f3f4f6;padding:2px 8px;border-radius:20px}
+    .status-available{color:#16a34a;font-size:11px;font-weight:600}
+    .status-low{color:#d97706;font-size:11px;font-weight:600}
+    .status-out{color:#dc2626;font-size:11px;font-weight:600}
+
+    /* MAIN */
+    .page-body{max-width:1100px;margin:0 auto;padding:40px 24px 60px}
+
+    /* DISTRICT CHIPS */
+    .district-strip{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;align-items:center}
+    .district-label{font-size:12px;font-weight:600;color:#6b7280;margin-right:4px}
+    .district-chip{padding:6px 14px;border-radius:20px;font-size:12px;font-weight:500;color:#6b7280;background:#fff;border:1.5px solid #e2e8f0;cursor:pointer;transition:all .15s}
+    .district-chip:hover{border-color:#1e2d6b;color:#1e2d6b}
+    .district-chip.active{background:#1e2d6b;color:#fff;border-color:#1e2d6b}
+
+    /* RESULTS */
+    .results-header{margin-bottom:16px}
+    .results-title{font-size:18px;font-weight:700;color:#1a1d23}
+    .results-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:40px}
+    .result-card{background:#fff;border:1px solid #e8eaf0;border-radius:14px;padding:22px;transition:box-shadow .15s}
+    .result-card:hover{box-shadow:0 4px 16px rgba(0,0,0,0.08)}
+    .rc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;gap:10px}
+    .rc-name{font-size:16px;font-weight:700;color:#1a1d23}
+    .rc-dosage{font-size:12px;color:#8a94a6;margin-top:3px}
+    .pill{display:inline-flex;align-items:center;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
+    .pill-blue{background:#eff6ff;color:#2563eb}
+    .pill-green{background:#f0fdf4;color:#16a34a}
+    .pill-yellow{background:#fffbeb;color:#d97706}
+    .pill-red{background:#fef2f2;color:#dc2626}
+
+    /* AVAILABILITY BANNER — replaces stock numbers */
+    .avail-banner{display:flex;align-items:center;gap:10px;border-radius:10px;padding:12px 16px;margin-bottom:14px}
+    .avail-banner.avail-green{background:#f0fdf4;border:1px solid #bbf7d0}
+    .avail-banner.avail-yellow{background:#fffbeb;border:1px solid #fde68a}
+    .avail-banner.avail-red{background:#fef2f2;border:1px solid #fecaca}
+    .avail-dot-big{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+    .avail-green .avail-dot-big{background:#22c55e}
+    .avail-yellow .avail-dot-big{background:#f59e0b}
+    .avail-red .avail-dot-big{background:#ef4444}
+    .avail-text{font-size:14px;font-weight:600}
+    .avail-green .avail-text{color:#15803d}
+    .avail-yellow .avail-text{color:#92400e}
+    .avail-red .avail-text{color:#991b1b}
+
+    .fac-list-title{font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px}
+    .fac-row{display:flex;align-items:center;justify-content:space-between;padding:9px 12px;background:#fafafa;border:1px solid #f1f3f7;border-radius:8px;margin-bottom:6px;gap:10px}
+    .fac-row-name{font-size:13px;font-weight:600;color:#1a1d23}
+    .fac-row-meta{font-size:11px;color:#8a94a6;margin-top:2px}
+    .fac-status-pill{font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px}
+    .fac-status-pill.s-available{background:#f0fdf4;color:#15803d}
+    .fac-status-pill.s-low{background:#fffbeb;color:#92400e}
+    .fac-status-pill.s-out{background:#fef2f2;color:#991b1b}
+    .more-fac{font-size:12px;color:#8a94a6;margin-top:6px}
+
+    /* NO RESULTS */
+    .no-results{text-align:center;padding:60px 20px;background:#fff;border:1px solid #e8eaf0;border-radius:14px;margin-bottom:40px}
+    .no-results-icon{font-size:40px;margin-bottom:12px}
+    .no-results p{font-size:14px;color:#6b7280}
+
+    /* BROWSE SECTION */
+    .section-title{font-size:20px;font-weight:700;color:#1a1d23;margin-bottom:6px}
+    .section-sub{font-size:13px;color:#8a94a6;margin-bottom:20px}
+    .district-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:48px}
+    .district-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:14px 16px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#374151;transition:all .15s;cursor:pointer}
+    .district-card:hover{border-color:#1e2d6b;color:#1e2d6b;background:#f0f4ff}
+    .district-card.active{border-color:#1e2d6b;background:#1e2d6b;color:#fff}
+
+    .footer{text-align:center;padding:24px;font-size:12px;color:#8a94a6;border-top:1px solid #e8eaf0;background:#fff}
+
+    @media(max-width:768px){
+      .results-grid{grid-template-columns:1fr}
+      .district-grid{grid-template-columns:repeat(3,1fr)}
+      .search-wrap{flex-direction:column}
+      .hero h1{font-size:26px}
+      .nav{padding:0 16px}
+      .nav-sub{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+    <div>
+      <div class="nav-name">MedStock</div>
+      <div class="nav-sub" data-en="National Medicine Availability &amp; Referral System" data-tn="Tsamaiso ya Meriri ya Setšhaba">National Medicine Availability &amp; Referral System</div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <!-- LANGUAGE TOGGLE -->
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+      <button class="lang-btn" onclick="setLang('tn')" id="btn-tn">TN</button>
+    </div>
+    <span class="public-pill" data-en="🌐 Public Portal" data-tn="🌐 Lefelo la Badiri">🌐 Public Portal</span>
+    <a href="/admin/login"><button class="btn-admin" data-en="Admin Login" data-tn="Tsena — Motsamaisi">Admin Login</button></a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge" data-en="🤖 AI-Powered &nbsp;·&nbsp; 60 Facilities &nbsp;·&nbsp; 9 Districts &nbsp;·&nbsp; Live Data" data-tn="🤖 AI &nbsp;·&nbsp; Dikliniki 60 &nbsp;·&nbsp; Dikgaolo 9 &nbsp;·&nbsp; Data ya Jaanong">
+    🤖 AI-Powered &nbsp;·&nbsp; 60 Facilities &nbsp;·&nbsp; 9 Districts &nbsp;·&nbsp; Live Data
+  </div>
+  <h1 data-en="Find Medicine Near You" data-tn="Batlha Moriri Gaufi le Wena">Find Medicine Near You</h1>
+  <p class="hero-sub" data-en="Search real-time medicine availability across all health facilities in Botswana. Filter by district to find the nearest facility with your medicine." data-tn="Batlha meriri mo dikliniki tsotlhe mo Botswana ka nako. Tlhompha kgaolo ya gago go bona kliniki e e gaufi e e nang le moriri wa gago.">
+    Search real-time medicine availability across all health facilities in Botswana. Filter by district to find the nearest facility with your medicine.
+  </p>
+
+  <form class="search-wrap" action="/patient/search" method="get" autocomplete="off" id="search-form">
+    <div class="search-field">
+      <svg class="search-icon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" name="q" id="med-search" class="search-input"
+             data-en-placeholder="Medicine name (e.g. Paracetamol, ACT, ARV…)"
+             data-tn-placeholder="Leina la moriri (jaaka Paracetamol, ACT, ARV…)"
+             placeholder="Medicine name (e.g. Paracetamol, ACT, ARV…)"
+             value="{{ query if query is defined else '' }}"
+             oninput="fetchSuggestions(this.value)" autocomplete="off"/>
+      <div class="suggestions-box" id="suggestions"></div>
+    </div>
+    <select name="category" class="search-select">
+      <option value="All Categories" data-en="All Categories" data-tn="Mefuta Yotlhe">All Categories</option>
+      {% for cat in categories %}
+        <option value="{{ cat }}" {% if selected_category is defined and selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+      {% endfor %}
+    </select>
+    <select name="district" class="search-select">
+      <option value="" data-en="All Districts" data-tn="Dikgaolo Tsotlhe">All Districts</option>
+      {% for d in districts %}
+        <option value="{{ d }}" {% if selected_district is defined and selected_district == d %}selected{% endif %}>{{ d }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit" class="btn-search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span data-en="Search" data-tn="Batlha">Search</span>
+    </button>
+  </form>
+</section>
+
+<div class="page-body">
+
+  <!-- DISTRICT CHIPS -->
+  <div class="district-strip">
+    <span class="district-label" data-en="Filter by district:" data-tn="Tlhompha ka kgaolo:">Filter by district:</span>
+    <a href="/patient/search{% if query is defined and query %}?q={{ query }}{% endif %}">
+      <span class="district-chip {% if not (selected_district is defined and selected_district) %}active{% endif %}" data-en="All" data-tn="Tsotlhe">All</span>
+    </a>
+    {% for d in districts %}
+    <a href="/patient/search?{% if query is defined and query %}q={{ query }}&{% endif %}district={{ d }}">
+      <span class="district-chip {% if selected_district is defined and selected_district == d %}active{% endif %}">{{ d }}</span>
+    </a>
+    {% endfor %}
+  </div>
+
+  <!-- RESULTS -->
+  {% if results is defined %}
+  <div class="results-header">
+    <div class="results-title">
+      <span data-en="Search Results" data-tn="Ditlamelelo tsa Patlisiso">Search Results</span>
+      <span style="font-size:14px;font-weight:400;color:#8a94a6;margin-left:8px">
+        {{ results|length }}
+        <span data-en="found" data-tn="di-fitlhetswe">found</span>
+        {% if query is defined and query %} <span data-en="for" data-tn="go ya go">"{{ query }}"</span>{% endif %}
+        {% if selected_district is defined and selected_district %} — {{ selected_district }}{% endif %}
+      </span>
+    </div>
+  </div>
+
+  {% if results %}
+  <div class="results-grid">
+    {% for med in results %}
+    <div class="result-card">
+      <div class="rc-header">
+        <div>
+          <div class="rc-name">{{ med.name }}</div>
+          <div class="rc-dosage">{{ med.dosage }}</div>
+        </div>
+        <span class="pill pill-blue">{{ med.category }}</span>
+      </div>
+
+      <!-- AVAILABILITY STATUS — no units shown -->
+      <div class="avail-banner {% if med.status == 'available' %}avail-green{% elif med.status == 'low' %}avail-yellow{% else %}avail-red{% endif %}">
+        <div class="avail-dot-big"></div>
+        <div class="avail-text">
+          {% if med.status == 'available' %}
+            <span data-en="✓ Available at multiple facilities" data-tn="✓ E fitlhelwa mo dikliniki di le dintsi">✓ Available at multiple facilities</span>
+          {% elif med.status == 'low' %}
+            <span data-en="⚠ Limited availability — act soon" data-tn="⚠ Meriri e fokotsegile — itlhaganele">⚠ Limited availability — act soon</span>
+          {% else %}
+            <span data-en="✗ Currently out of stock" data-tn="✗ Ga e yo jaanong">✗ Currently out of stock</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="fac-list-title">
+        <span data-en="📍 Go to one of these facilities" data-tn="📍 Ya kwa go nngwe ya dikliniki tse">📍 Go to one of these facilities</span>
+      </div>
+      {% for f in med.facilities %}
+      <div class="fac-row">
+        <div>
+          <div class="fac-row-name">{{ f.name }}</div>
+          <div class="fac-row-meta">{{ f.village }}, {{ f.district }} · {{ f.type }}</div>
+        </div>
+        <span class="fac-status-pill {% if f.status == 'Available' %}s-available{% elif f.status == 'Low' %}s-low{% else %}s-out{% endif %}">
+          {% if f.status == 'Available' %}<span data-en="In Stock" data-tn="E Teng">In Stock</span>
+          {% elif f.status == 'Low' %}<span data-en="Low Stock" data-tn="E Fokotsegile">Low Stock</span>
+          {% else %}<span data-en="Out" data-tn="Ga e yo">Out</span>{% endif %}
+        </span>
+      </div>
+      {% endfor %}
+      {% if med.more_count > 0 %}
+      <div class="more-fac">
+        <span data-en="+{{ med.more_count }} more facilities" data-tn="+{{ med.more_count }} dikliniki tse dingwe">+{{ med.more_count }} more facilities</span>
+      </div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <div class="no-results">
+    <div class="no-results-icon">🔍</div>
+    <p data-en="No medicines found. Try a different name or clear the district filter." data-tn="Ga go na meriri e fitlhilweng. Leka leina le lengwe kgotsa tlosa tlhompo ya kgaolo.">
+      No medicines found. Try a different name or clear the district filter.
+    </p>
+  </div>
+  {% endif %}
+  {% endif %}
+
+  <!-- BROWSE BY DISTRICT -->
+  <div class="section-title" data-en="Browse by District" data-tn="Batlha ka Kgaolo">Browse by District</div>
+  <div class="section-sub" data-en="Select your district to see medicine availability in your area" data-tn="Tlhopha kgaolo ya gago go bona meriri e e fitlhelwang mo tikologong ya gago">
+    Select your district to see medicine availability in your area
+  </div>
+  <div class="district-grid">
+    {% for d in districts %}
+    <a href="/patient/search?district={{ d }}">
+      <div class="district-card {% if selected_district is defined and selected_district == d %}active{% endif %}">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 1 8 8c0 5.25-8 12-8 12S4 15.25 4 10a8 8 0 0 1 8-8z"/></svg>
+        {{ d }}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+
+</div>
+
+<div class="footer">
+  © 2026 MedStock &nbsp;·&nbsp;
+  <span data-en="Free public access — no account required" data-tn="Phitlhelelo ya mahala — ga go na akhaonto e e tlhokegang">Free public access — no account required</span>
+  &nbsp;·&nbsp; <a href="/admin/login" style="color:#2563eb;" data-en="Admin Login" data-tn="Tsena — Motsamaisi">Admin Login</a>
+</div>
+
+<script>
+// ── Language system ────────────────────────────────────────
+const LANG_KEY = 'sentinel_lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'en';
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem(LANG_KEY, lang);
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.getElementById('btn-tn').classList.toggle('active', lang === 'tn');
+  document.getElementById('html-root').lang = lang === 'tn' ? 'tn' : 'en';
+
+  // Update all data-en / data-tn elements
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const txt = el.getAttribute('data-' + lang);
+    if (txt !== null) el.innerHTML = txt;
+  });
+
+  // Update placeholders
+  document.querySelectorAll('[data-en-placeholder]').forEach(el => {
+    const ph = el.getAttribute('data-' + lang + '-placeholder');
+    if (ph) el.placeholder = ph;
+  });
+}
+
+// Apply on load
+document.addEventListener('DOMContentLoaded', () => setLang(currentLang));
+
+// ── Autocomplete ──────────────────────────────────────────
+let debounce;
+function fetchSuggestions(val) {
+  clearTimeout(debounce);
+  const box = document.getElementById('suggestions');
+  if (val.length < 1) { box.innerHTML=''; box.style.display='none'; return; }
+  debounce = setTimeout(() => {
+    fetch('/api/suggest?q=' + encodeURIComponent(val))
+      .then(r => r.json())
+      .then(data => {
+        if (!data.length) { box.innerHTML=''; box.style.display='none'; return; }
+        const inStock  = currentLang === 'tn' ? '✓ E Teng'        : '✓ In Stock';
+        const lowStock = currentLang === 'tn' ? '⚠ E Fokotsegile' : '⚠ Low Stock';
+        const outStock = currentLang === 'tn' ? '✗ Ga e yo'       : '✗ Out';
+        box.style.display = 'block';
+        box.innerHTML = data.map(s => `
+          <div class="suggestion-item" onclick="selectSuggestion('${s.name.replace(/'/g,"\\'")}')">
+            <div class="sug-name">${s.name}</div>
+            <div style="display:flex;align-items:center;gap:8px">
+              <span class="sug-cat-tag">${s.category}</span>
+              <span class="status-${s.status}">${s.status==='available'?inStock:s.status==='low'?lowStock:outStock}</span>
+            </div>
+          </div>`).join('');
+      });
+  }, 200);
+}
+function selectSuggestion(name) {
+  document.getElementById('med-search').value = name;
+  document.getElementById('suggestions').style.display = 'none';
+  document.getElementById('search-form').submit();
+}
+document.addEventListener('click', e => {
+  if (!e.target.closest('.search-field'))
+    document.getElementById('suggestions').style.display = 'none';
+});
+</script>
+</body>
+</html>
