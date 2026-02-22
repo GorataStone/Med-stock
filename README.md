@@ -14,7 +14,7 @@
 5. [Installation & Setup](#5-installation--setup)
 6. [Running the Application](#6-running-the-application)
 7. [URL Routes Reference](#7-url-routes-reference)
-8. [Patient Portal — Full Guide](#8-patient-portal--full-guide)
+8. [Patient Portal - Full Guide](#8-patient-portal--full-guide)
 9. [Admin Dashboard — Full Guide](#9-admin-dashboard--full-guide)
 10. [Admin Login Credentials](#10-admin-login-credentials)
 11. [Language Support](#11-language-support)
