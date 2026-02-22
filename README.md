@@ -1,5 +1,5 @@
 # MedStock
-### National Medicine Availability & Referral System — Botswana
+### National Medicine Availability & Referral System - Botswana
 
 > A full-stack AI-powered web application that gives patients real-time visibility into medicine availability across all public health facilities in Botswana, and gives health administrators a live command centre to monitor stock, predict shortages, and coordinate redistribution.
 
